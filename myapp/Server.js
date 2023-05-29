@@ -1,10 +1,18 @@
 import express from 'express'
 import 'dotenv/config'
-
+import db from './config/db.js'
+import routerUrl from './router/userUrl.js'
 const app=express();
 
+db.once("open",()=>{
+    console.log('connected')
+})
+
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 const port=process.env.PORT||3000;
+app.use('/',routerUrl)
 app.get('/',(req,res)=>{
     res.send('welcome to url shortner')
 })
@@ -35,5 +43,5 @@ app.get('/r/github',(req,res)=>{
 })
 
 app.listen(port,()=>{
-    console.log('server is listening at port 5000')
+    console.log('server is listening at port 8000')
 })
