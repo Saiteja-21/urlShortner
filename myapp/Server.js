@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:true}))
 
 const port=process.env.PORT||3000;
 app.use('/',routerUrl)
-app.use('/r/:alias',redirect)
+app.use('/r',redirect)
 app.get('/',(req,res)=>{
     res.send('welcome to url shortner')
 })
@@ -37,12 +37,12 @@ app.get('/i',(req,res)=>{
     res.json(obj)
 
 })
-app.get('/r/google',(req,res)=>{
-    res.redirect('https://www.google.com')
-})
-app.get('/r/github',(req,res)=>{
-    res.redirect('https://www.github.com')
-})
+// app.get('/r/google',(req,res)=>{
+//     res.redirect('https://www.google.com')
+// })
+// app.get('/r/github',(req,res)=>{
+//     res.redirect('https://www.github.com')
+// })
 
 app.listen(port,()=>{
     console.log('server is listening at port 8000')
