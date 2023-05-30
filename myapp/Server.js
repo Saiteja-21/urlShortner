@@ -3,6 +3,7 @@ import 'dotenv/config'
 import db from './config/db.js'
 import routerUrl from './router/userUrl.js'
 import redirect from './router/redirectUrl.js'
+import shortUrl from './router/ShortenUrl.js'
 const app=express();
 
 db.once("open",()=>{
@@ -15,6 +16,7 @@ app.use(express.urlencoded({extended:true}))
 const port=process.env.PORT||3000;
 app.use('/',routerUrl)
 app.use('/r',redirect)
+app.use('/shorten',shortUrl)
 app.get('/',(req,res)=>{
     res.send('welcome to url shortner')
 })
