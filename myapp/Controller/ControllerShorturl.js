@@ -14,7 +14,7 @@ export const postShorturl=async (req,res)=>{
    console.log(doc)
    const saved=UrlModel(doc);
    const result= await saved.save();
-   res.send(result);
+   res.send(data);
 
   
 

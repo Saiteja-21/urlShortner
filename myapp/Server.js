@@ -4,6 +4,8 @@ import db from './config/db.js'
 import routerUrl from './router/userUrl.js'
 import redirect from './router/redirectUrl.js'
 import shortUrl from './router/ShortenUrl.js'
+import  cors from 'cors'
+import UrlModel from './model/Url_model.js'
 const app=express();
 
 db.once("open",()=>{
@@ -11,12 +13,17 @@ db.once("open",()=>{
 })
 
 app.use(express.json())
+app.use(cors())
 app.use(express.urlencoded({extended:true}))
 
 const port=process.env.PORT||3000;
-app.use('/',routerUrl)
+app.use('/map',routerUrl)
 app.use('/r',redirect)
 app.use('/shorten',shortUrl)
+app.get('/mappings',async (req,res)=>{
+    const d=await UrlModel.find();
+    res.send(d)
+})
 app.get('/',(req,res)=>{
     res.send('welcome to url shortner')
 })
