@@ -8,14 +8,22 @@ export const postShorturl=async (req,res)=>{
     const short=hash.digest('hex')
    const data=short[2]+short[5]+short.slice(short.length-6,short.length-2)
    const doc={
-    url,
+    url, 
     alias:data
    }
-   console.log(doc)
-   const saved=UrlModel(doc);
-   const result= await saved.save();
-   res.send(data);
+   const search=UrlModel.findOne({url:url})
+   if(search){
+    res.send(search)
 
+   }else{
+    const saved=UrlModel(doc);
+    const result= await saved.save();
+    res.send(data);
+ 
+
+   }
+   
+  
   
 
 }
