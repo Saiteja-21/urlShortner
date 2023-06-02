@@ -13,7 +13,7 @@ export const postShorturl=async (req,res)=>{
    }
    const search= await UrlModel.findOne({url:url})
    if(search){
-    res.send(search)
+    res.send(search.alias)
 
    }else{
     const saved=UrlModel(doc);
