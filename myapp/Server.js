@@ -7,13 +7,15 @@ import shortUrl from './router/ShortenUrl.js'
 import  cors from 'cors'
 import UrlModel from './model/Url_model.js'
 const app=express();
+app.use(cors())
+
 
 db.once("open",()=>{
     console.log('connected')
 })
 
 app.use(express.json())
-app.use(cors())
+
 app.use(express.urlencoded({extended:true}))
 
 const port=process.env.PORT||3000;

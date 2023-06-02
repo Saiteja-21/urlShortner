@@ -4,15 +4,18 @@ import urlModel from '../model/Url_model.js'
 export const postData=async (req,res)=>{
     console.log('inpostdata')
     const newdata= urlModel(req.body)
+    console.log(newdata)
 
     try{
-        const search=urlModel.findOne({url:req.body.url})
+        const search=await urlModel.findOne({url:req.body.url})
         if(search){
             res.status(200)
+            console.log(search)
 
         }else{
             const saved=await newdata.save();
-            res.status(200).json(saved)
+            res.json(saved)
+            console.log(saved)
     
 
         }
