@@ -119,7 +119,7 @@ function App() {
         <Button style={{marginTop:"20px"}} variant="contained" onClick={firstButton}>Send</Button>
       {
         value && <h2 style={{color:'green'}}>
-          Now you can search using  https://shortenurl.onrender.com/r/{value}
+          Now you can search using : https://shortenurl.onrender.com/r/{value}
         </h2>
        
       }
