@@ -11,7 +11,7 @@ export const postShorturl=async (req,res)=>{
     url, 
     alias:data
    }
-   const search=UrlModel.findOne({url:url})
+   const search= await UrlModel.findOne({url:url})
    if(search){
     res.send(search)
 
