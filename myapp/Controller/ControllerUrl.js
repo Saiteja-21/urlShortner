@@ -9,7 +9,7 @@ export const postData=async (req,res)=>{
     try{
         const search=await urlModel.findOne({url:req.body.url})
         if(search){
-            res.status(200)
+            res.send(search)
             console.log(search)
 
         }else{
