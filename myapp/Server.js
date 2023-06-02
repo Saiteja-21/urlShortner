@@ -27,7 +27,7 @@ app.get('/mappings',async (req,res)=>{
     res.send(d)
 })
 app.get('/',(req,res)=>{
-    res.send('welcome to url shortner')
+    res.redirect('https://647a2b13e9ae3838fca12b14--phenomenal-lamington-917755.netlify.app/')
 })
 app.get('/i/google',(req,res)=>{
     res.send('https://www.google.com')
